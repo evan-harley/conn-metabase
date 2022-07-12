@@ -10,7 +10,7 @@ inputs:
   openshift_metabase_namespace:
     description: "The namespace to be deployed to"
     required: true
-  app_route:
+  host_route:
     description: "The route for metabase to be located at"
     required: true
   db_route:
@@ -31,9 +31,9 @@ runs:
         insecure_skip_tls_verify: true
     - run: |
         chmod +x ./metabase_deploy.sh
-        ./lib/metabase_deploy.sh -n ${{ inputs.openshift_metabase_namespace }} \
+        ./metabase_deploy.sh -n ${{ inputs.openshift_metabase_namespace }} \
           --set namespace=${{ inputs.openshift_metabase_namespace }} \
           --set metabase.database.host=${{ inputs.db_route }} \
           --set metabase.database.password=${{ inputs.db_password  }} \
-          --set route.host=${{ inputs.app_route }}
+          --set route.host=${{ inputs.host_route }}
       shell: bash

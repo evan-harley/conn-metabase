@@ -2,7 +2,8 @@ apiVersion: postgres-operator.crunchydata.com/v1beta1
 kind: PostgresCluster
 metadata:
   name: hippo-ha
-  labels: {{ include "ccbc-metabase.labels" . | indent 4 }}
+  labels:
+  {{ include "ccbc-metabase.labels" . | indent 4}}
 spec:
   monitoring:
     pgmonitor:

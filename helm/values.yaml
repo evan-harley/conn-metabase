@@ -1,0 +1,27 @@
+fullnameOverride: ccbc-metabase
+
+metabase:
+  replicaCount: 3
+  image:
+    repository: metabase/metabase-enterprise
+    pullPolicy: IfNotPresent
+    tag: v1.44.4
+  service:
+    name: metabase
+  database:
+    type: postgres
+    host: hippo-ha-primary.b40eb8-dev.svc # pass in via deploy script
+    port: 5432
+    dbname: hippo-ha # pass in via deploy script
+    username: hippo-ha # pass in via deploy script
+    password: # pass in via deploy script
+
+route:
+  host: ccbc-metabase-dev.apps.silver.devops.gov.bc.ca # pass in via deploy script
+
+deployer:
+  serviceAccount:
+    enabled: true
+
+networkPolicies:
+  enabled: true

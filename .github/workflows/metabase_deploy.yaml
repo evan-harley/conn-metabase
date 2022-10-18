@@ -3,8 +3,6 @@ name: Deploy Metabase to OpenShift
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
 
 env:
   OPENSHIFT_SERVER: ${{ secrets.OPENSHIFT_SERVER }}
@@ -13,7 +11,7 @@ jobs:
   deploy-to-metabase-development:
     runs-on: ubuntu-latest
     environment:
-      name: Metabase-Development
+      name: development
       url: "https://ccbc-metabase-dev.apps.silver.devops.gov.bc.ca"
     steps:
       - name: Checkout
@@ -32,7 +30,7 @@ jobs:
     needs: [deploy-to-metabase-development]
     runs-on: ubuntu-latest
     environment:
-      name: Metabase-Test
+      name: test
       url: "https://ccbc-metabase-test.apps.silver.devops.gov.bc.ca"
     steps:
       - name: Checkout
@@ -51,7 +49,7 @@ jobs:
     needs: [deploy-to-metabase-test]
     runs-on: ubuntu-latest
     environment:
-      name: Metabase-Production
+      name: production
       url: "https://ccbc-metabase.apps.silver.devops.gov.bc.ca"
     steps:
       - name: Checkout

@@ -29,7 +29,7 @@ runs:
         openshift_token: ${{ inputs.openshift_token }}
         insecure_skip_tls_verify: true
     - run: |
-        chmod +x ./metabase_deploy.sh
+        chmod +x ./.bin/metabase_deploy.sh
         ./metabase_deploy.sh -n ${{ inputs.openshift_metabase_namespace }} \
         --set namespace=${{ inputs.openshift_metabase_namespace }} \
         --set metabase.database.host=${{ inputs.db_route }} \

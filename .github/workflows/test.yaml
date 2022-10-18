@@ -1,0 +1,19 @@
+name: test
+
+on:
+  workflow_call:
+
+concurrency:
+  group: test-code-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gitleaks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: ./.bin/install-gitleaks-linux-x64.sh
+      - run: ./gitleaks detect --exit-code 0 --report-format sarif --report-path "gitleaks.sarif"
+      - uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: "gitleaks.sarif"

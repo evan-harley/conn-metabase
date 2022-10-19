@@ -30,7 +30,7 @@ runs:
         insecure_skip_tls_verify: true
     - run: |
         chmod +x ./.bin/metabase-deploy.sh
-        ./metabase-deploy.sh -n ${{ inputs.openshift_metabase_namespace }} \
+        ./.bin/metabase-deploy.sh -n ${{ inputs.openshift_metabase_namespace }} \
         --set namespace=${{ inputs.openshift_metabase_namespace }} \
         --set metabase.database.host=${{ inputs.db_route }} \
         --set metabase.database.password=${{ inputs.db_password }} \

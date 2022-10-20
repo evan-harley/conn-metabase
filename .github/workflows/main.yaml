@@ -19,3 +19,8 @@ jobs:
     uses: ./.github/workflows/metabase-deploy.yaml
     secrets:
       OPENSHIFT_SERVER: ${{ secrets.OPENSHIFT_SERVER }}
+      OPENSHIFT_TOKEN: ${{ secrets.OPENSHIFT_TOKEN }}
+      OPENSHIFT_METABASE_NAMESPACE: ${{ secrets.OPENSHIFT_METABASE_NAMESPACE }}
+      HOST_ROUTE: ${{ secrets.HOST_ROUTE }}
+      DB_ROUTE: ${{ secrets.DB_ROUTE }}
+      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}

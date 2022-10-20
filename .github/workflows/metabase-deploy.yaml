@@ -1,11 +1,9 @@
 name: Deploy Metabase to OpenShift
 
 on:
-  push:
-    branches: [main]
-
-env:
-  OPENSHIFT_SERVER: ${{ secrets.OPENSHIFT_SERVER }}
+  workflow_call:
+    secrets:
+      OPENSHIFT_SERVER: { required: true }
 
 jobs:
   deploy-to-metabase-development:

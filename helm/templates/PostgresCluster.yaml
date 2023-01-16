@@ -8,7 +8,7 @@ spec:
     pgmonitor:
       exporter:
         image: artifacts.developer.gov.bc.ca/bcgov-docker-local/crunchy-postgres-exporter:ubi8-5.0.4-0
-  image: artifacts.developer.gov.bc.ca/bcgov-docker-local/crunchy-postgres:centos8-14.1-0
+  image: artifacts.developer.gov.bc.ca/bcgov-docker-local/crunchy-postgres:centos8-13.5-0
   postgresVersion: 13
   instances:
     - name: pgha1

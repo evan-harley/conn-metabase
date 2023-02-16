@@ -25,3 +25,11 @@ deployer:
 
 networkPolicies:
   enabled: true
+
+dataVolumeClaimSpec:
+  storage: 1Gi
+
+pgbackrest:
+  volume:
+    storage: 2Gi
+

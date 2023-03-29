@@ -38,6 +38,6 @@ runs:
         --set namespace=${{ inputs.openshift_metabase_namespace }} \
         --set metabase.database.host=${{ inputs.db_route }} \
         --set metabase.database.password=${{ inputs.db_password }} \
-        --set route.host=${{ inputs.host_route }}
+        --set route.host=${{ inputs.host_route }} \
         --values values-${{ inputs.environment }}.yaml
       shell: bash

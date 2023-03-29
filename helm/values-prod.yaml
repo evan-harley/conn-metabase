@@ -1,0 +1,9 @@
+# Current quota is 16Gi so setting to 3x 5Gi = 15Gi 
+dataVolumeClaimSpec:
+  storage: 5Gi
+
+# Current quota is 8Gi so using all of the backup storage
+pgbackrest:
+  volume:
+    storage: 8Gi
+

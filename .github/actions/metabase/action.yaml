@@ -19,6 +19,10 @@ inputs:
   db_password:
     description: "Database password"
     required: true
+  environment:
+    description: "Environment to set specific helm values file"
+    required: true
+
 runs:
   using: composite
   steps:
@@ -35,4 +39,5 @@ runs:
         --set metabase.database.host=${{ inputs.db_route }} \
         --set metabase.database.password=${{ inputs.db_password }} \
         --set route.host=${{ inputs.host_route }}
+        --values values-${{ inputs.environment }}.yaml
       shell: bash

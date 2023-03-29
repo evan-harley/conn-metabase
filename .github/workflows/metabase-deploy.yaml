@@ -28,6 +28,7 @@ jobs:
           host_route: ${{ secrets.HOST_ROUTE }}
           db_route: ${{ secrets.DB_ROUTE }}
           db_password: ${{ secrets.DB_PASSWORD }}
+          environment: dev
 
   deploy-to-metabase-test:
     needs: [deploy-to-metabase-development]
@@ -47,6 +48,7 @@ jobs:
           host_route: ${{ secrets.HOST_ROUTE }}
           db_route: ${{ secrets.DB_ROUTE }}
           db_password: ${{ secrets.DB_PASSWORD }}
+          environment: test
 
   deploy-to-metabase-production:
     needs: [deploy-to-metabase-test]
@@ -66,3 +68,4 @@ jobs:
           host_route: ${{ secrets.HOST_ROUTE }}
           db_route: ${{ secrets.DB_ROUTE }}
           db_password: ${{ secrets.DB_PASSWORD }}
+          environment: prod

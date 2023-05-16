@@ -2,5 +2,8 @@ dependencies:
 - name: metabase
   repository: https://bcgov.github.io/cas-metabase/
   version: 0.12.1
-digest: sha256:13e88047d3369c27a0e97416fa9d340f0fbcd580818e3459092e521ad36781fa
-generated: "2022-03-31T11:16:07.769173206-07:00"
+- name: crunchy-postgres
+  repository: https://bcgov.github.io/crunchy-postgres/
+  version: 0.4.0
+digest: sha256:a64f9a4a9710681b77d165b0010abb875eb4c576af0af5d4c0581bebe04df043
+generated: "2023-05-16T15:50:34.25213-07:00"

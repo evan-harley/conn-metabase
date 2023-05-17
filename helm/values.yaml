@@ -1,8 +1,6 @@
 fullnameOverride: ccbc-metabase
 
-crunchy-postgres:
-  fullnameOverride: hippo-ha
-  nameOverride: hippo-ha
+
 
 metabase:
   replicaCount: 3
@@ -14,7 +12,7 @@ metabase:
     name: metabase
   database:
     type: postgres
-    host: hippo-ha-primary.b40eb8-dev.svc # pass in via deploy script
+    host: hippo-primary.b40eb8-dev.svc # pass in via deploy script
     port: 5432
     dbname: hippo-ha # pass in via deploy script
     username: hippo-ha # pass in via deploy script
@@ -30,53 +28,52 @@ deployer:
 networkPolicies:
   enabled: true
 
-crunchyImage: artifacts.developer.gov.bc.ca/bcgov-docker-local/crunchy-postgres:ubi8-14.7-0
-
-instances:
-  name: pgha1 # high availability
-  replicas: 3
-  dataVolumeClaimSpec:
-    storage: 1Gi
-    storageClassName: netapp-block-standard
-  requests:
-    cpu: 1m
-    memory: 250Mi
-  limits:
-    cpu: 500m
-    memory: 500Mi
-  replicaCertCopy:
+crunchy-postgres:
+  fullnameOverride: hippo-ha
+  nameOverride: hippo-ha
+  crunchyImage: artifacts.developer.gov.bc.ca/bcgov-docker-local/crunchy-postgres:ubi8-14.7-0
+  instances:
+    name: pgha1
+    replicas: 3
+    dataVolumeClaimSpec:
+      storage: 1Gi
+      storageClassName: netapp-block-standard
     requests:
       cpu: 1m
-      memory: 32Mi
+      memory: 250Mi
     limits:
-      cpu: 50m
-      memory: 64Mi
-
-pgBackRest:
-  image: artifacts.developer.gov.bc.ca/bcgov-docker-local/crunchy-pgbackrest:ubi8-2.41-4
-  retention: '10' # Ideally a larger number such as 30 backups/days
-  # If retention-full-type set to 'count' then the oldest backups will expire when the number of backups reach the number defined in retention
-  # If retention-full-type set to 'time' then the number defined in retention will take that many days worth of full backups before expiration
-  retentionFullType: count
-  repos:
-    schedules:
-      full: 0 8 * * *
-      incremental: 0 0,4,12,16,20 * * *
-    volume:
-      accessModes: 'ReadWriteOnce'
-      storage: 2Gi
-      storageClassName: netapp-file-backup
-  repoHost:
-    requests:
-      cpu: 2m
-      memory: 64Mi
-    limits:
-      cpu: 50m
-      memory: 128Mi
-  sidecars:
-    requests:
-      cpu: 1m
-      memory: 64Mi
-    limits:
-      cpu: 50m
-      memory: 128Mi
+      cpu: 500m
+      memory: 500Mi
+    replicaCertCopy:
+      requests:
+        cpu: 1m
+        memory: 32Mi
+      limits:
+        cpu: 50m
+        memory: 64Mi
+  pgBackRest:
+    image: artifacts.developer.gov.bc.ca/bcgov-docker-local/crunchy-pgbackrest:ubi8-2.41-4
+    retention: '10' # Ideally a larger number such as 30 backups/days
+    retentionFullType: count
+    repos:
+      schedules:
+        full: 0 8 * * *
+        incremental: 0 0,4,12,16,20 * * *
+      volume:
+        accessModes: 'ReadWriteOnce'
+        storage: 2Gi
+        storageClassName: netapp-file-backup
+    repoHost:
+      requests:
+        cpu: 2m
+        memory: 64Mi
+      limits:
+        cpu: 50m
+        memory: 128Mi
+    sidecars:
+      requests:
+        cpu: 1m
+        memory: 64Mi
+      limits:
+        cpu: 50m
+        memory: 128Mi

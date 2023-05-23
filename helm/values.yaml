@@ -16,7 +16,7 @@ metabase:
     port: 5432
     dbname: hippo-ha # pass in via deploy script
     username: hippo-ha # pass in via deploy script
-    password: asd # pass in via deploy script
+    password: # pass in via deploy script
 
 route:
   host: ccbc-metabase-dev.apps.silver.devops.gov.bc.ca # pass in via deploy script
@@ -35,9 +35,9 @@ crunchy-postgres:
   postgresVersion: 13
   instances:
     name: pgha1
-    replicas: 1
+    replicas: 3
     dataVolumeClaimSpec:
-      storage: 256Mi
+      storage: 1Gi
       storageClassName: netapp-block-standard
     requests:
       cpu: 1m
@@ -62,7 +62,7 @@ crunchy-postgres:
         incremental: 0 0,4,12,16,20 * * *
       volume:
         accessModes: 'ReadWriteOnce'
-        storage: 64Mi
+        storage: 2Gi
         storageClassName: netapp-file-backup
     repoHost:
       requests:

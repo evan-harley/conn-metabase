@@ -31,8 +31,8 @@ networkPolicies:
 crunchy-postgres:
   fullnameOverride: hippo-ha
   nameOverride: hippo-ha
-  crunchyImage: artifacts.developer.gov.bc.ca/bcgov-docker-local/crunchy-postgres:centos8-13.5-0
-  postgresVersion: 13
+  crunchyImage: artifacts.developer.gov.bc.ca/bcgov-docker-local/crunchy-postgres:ubi8-14.7-0
+  postgresVersion: 14
   instances:
     name: pgha1
     replicas: 3

@@ -6,4 +6,4 @@ echo "Deploying metabase to openshift $*"
 
 cd helm
 helm dep up
-helm upgrade --install --atomic -f ./values.yaml "$@" ccbc-metabase . --timeout=8m0s --set livenessProbe.httpGet=null --set readinessProbe.httpGet=null
+helm upgrade --install --atomic -f ./values.yaml --set livenessProbe.tcpSocket.port=3000 live --set livenessProbe.httpGet=null --set readinessProbe.httpGet=null "$@" ccbc-metabase . --timeout=8m0s

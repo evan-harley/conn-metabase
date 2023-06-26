@@ -13,7 +13,7 @@ jobs:
     uses: ./.github/workflows/test-code.yaml
 
   deploy-tools:
-    if: github.event.ref == 'refs/heads/main'
+    # if: github.event.ref == 'refs/heads/main'
     needs: [test-code]
     uses: ./.github/workflows/tools-deploy.yaml
     secrets:
@@ -22,7 +22,7 @@ jobs:
       NAMESPACE_PREFIX: ${{ secrets.NAMESPACE_PREFIX }}
 
   deploy-metabase:
-    if: github.event.ref == 'refs/heads/main'
+    # if: github.event.ref == 'refs/heads/main'
     needs: [test-code]
     uses: ./.github/workflows/metabase-deploy.yaml
     secrets:

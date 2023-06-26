@@ -25,6 +25,8 @@ metabase:
       cpu: 10m
       memory: 512Mi
   livenessProbe:
+    httpGet:
+      null
     tcpSocket:
       port: 3000
     initialDelaySeconds: 120
@@ -33,6 +35,8 @@ metabase:
     successThreshold: 1
     failureThreshold: 6
   readinessProbe:
+    httpGet:
+      null
     tcpSocket:
       port: 3000
     initialDelaySeconds: 30

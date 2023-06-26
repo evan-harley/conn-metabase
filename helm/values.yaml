@@ -19,7 +19,7 @@ metabase:
     password: # pass in via deploy script
   resources:
     limits:
-      cpuL: 100m
+      cpu: 100m
       memory: 1Gi
     requests: 
       cpu: 10m

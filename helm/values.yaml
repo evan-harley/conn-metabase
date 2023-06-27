@@ -25,9 +25,6 @@ metabase:
       cpu: 10m
       memory: 512Mi
   livenessProbe:
-    exec:
-      command:
-        - ls
     timeoutSeconds: 30
     periodSeconds: 10
     successThreshold: 1

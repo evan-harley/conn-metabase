@@ -17,6 +17,21 @@ metabase:
     dbname: hippo-ha # pass in via deploy script
     username: hippo-ha # pass in via deploy script
     password: # pass in via deploy script
+  resources:
+    limits:
+      cpu: 300m
+      memory: 1Gi
+    requests: 
+      cpu: 10m
+      memory: 512Mi
+  livenessProbe:
+    timeoutSeconds: 30
+    successThreshold: 1
+    failureThreshold: 6
+  readinessProbe:
+    initialDelaySeconds: 31
+    timeoutSeconds: 3
+    periodSeconds: 5
 
 route:
   host: ccbc-metabase-dev.apps.silver.devops.gov.bc.ca # pass in via deploy script

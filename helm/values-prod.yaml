@@ -1,3 +1,11 @@
+metabase:
+  resources:
+    limits:
+      cpuL: 500m
+      memory: 1Gi
+    requests: 
+      cpu: 100m
+      memory: 2Gi
 crunchy-postgres:
   instances:
     dataVolumeClaimSpec:

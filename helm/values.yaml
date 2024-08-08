@@ -1,13 +1,11 @@
 fullnameOverride: ccbc-metabase
 
-
-
 metabase:
   replicaCount: 3
   image:
     repository: metabase/metabase-enterprise
     pullPolicy: IfNotPresent
-    tag: v1.48.12
+    tag: v1.50.19
   service:
     name: metabase
   database:
@@ -21,7 +19,7 @@ metabase:
     limits:
       cpu: 300m
       memory: 1Gi
-    requests: 
+    requests:
       cpu: 10m
       memory: 512Mi
   livenessProbe:
@@ -69,14 +67,14 @@ crunchy-postgres:
         memory: 64Mi
   pgBackRest:
     image: artifacts.developer.gov.bc.ca/bcgov-docker-local/crunchy-pgbackrest:ubi8-2.41-4
-    retention: '10' # Ideally a larger number such as 30 backups/days
+    retention: "10" # Ideally a larger number such as 30 backups/days
     retentionFullType: count
     repos:
       schedules:
         full: 0 8 * * *
         incremental: 0 0,4,12,16,20 * * *
       volume:
-        accessModes: 'ReadWriteOnce'
+        accessModes: "ReadWriteOnce"
         storage: 1Gi
         storageClassName: netapp-file-backup
     repoHost:

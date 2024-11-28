@@ -1,7 +1,7 @@
 fullnameOverride: ccbc-metabase
 
 metabase:
-  replicaCount: 3
+  replicaCount: 1
   image:
     repository: metabase/metabase-enterprise
     pullPolicy: IfNotPresent
@@ -48,7 +48,7 @@ crunchy-postgres:
   postgresVersion: 14
   instances:
     name: pgha1
-    replicas: 3
+    replicas: 1
     dataVolumeClaimSpec:
       storage: 1Gi
       storageClassName: netapp-block-standard

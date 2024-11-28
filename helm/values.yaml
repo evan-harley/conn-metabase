@@ -13,7 +13,7 @@ metabase:
     host: hippo-ha-pgbouncer.dba3f8-dev.svc # pass in via deploy script
     port: 5432
     dbname: hippo-ha # pass in via deploy script
-    username: hippo-ha # pass in via deploy script
+    username: _crunchypgbouncer # pass in via deploy script
     password: 
   resources:
     limits:

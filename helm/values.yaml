@@ -36,7 +36,7 @@ route:
 
 deployer:
   serviceAccount:
-    enabled: true
+    enabled: false
 
 networkPolicies:
   enabled: true

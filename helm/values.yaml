@@ -57,7 +57,7 @@ crunchy-postgres:
       memory: 250Mi
     limits:
       cpu: 500m
-      memory: 500Mi
+      memory: 300Mi
     replicaCertCopy:
       requests:
         cpu: 1m

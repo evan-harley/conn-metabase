@@ -50,7 +50,7 @@ crunchy-postgres:
     name: pgha1
     replicas: 1
     dataVolumeClaimSpec:
-      storage: 1Gi
+      storage: 512Mi
       storageClassName: netapp-block-standard
     requests:
       cpu: 1m
@@ -75,7 +75,7 @@ crunchy-postgres:
         incremental: 0 0,4,12,16,20 * * *
       volume:
         accessModes: "ReadWriteOnce"
-        storage: 1Gi
+        storage: 256Mi
         storageClassName: netapp-file-backup
     repoHost:
       requests:
